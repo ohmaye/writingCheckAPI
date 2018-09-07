@@ -3,9 +3,6 @@ const AWS = require("aws-sdk");
 
 const lambda = new AWS.Lambda({ region: "us-east-1" });
 
-//const message_string = {};
-
-
 
 module.exports.endpoint = (event, context, callback) => {
   let writing = "***";
@@ -43,9 +40,6 @@ module.exports.endpoint = (event, context, callback) => {
             Data: result
           }
         })
-      }
-      if (data.Payload) {
-        result = data.Payload;
       }
       callback(null, response);
     }
