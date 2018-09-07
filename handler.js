@@ -1,4 +1,16 @@
 "use strict";
+const AWS = require("aws-sdk")
+
+const lambda = new AWS.lambda({region:"us-east-1"})
+const message_string = {}
+const params = {
+  FunctionName: "writingCheck-dev-writingCheck",
+  InvocationType: "RequestResponse",
+  Payload: JSON.stringify({"writing":"hello","sample":"hi"})
+}
+lambda.invoke(params, (error, data) => {
+  console.log("Done calling lambda")
+})
 
 module.exports.endpoint = (event, context, callback) => {
   let writing = '***'
@@ -11,6 +23,8 @@ module.exports.endpoint = (event, context, callback) => {
   }
 
   let termFrequencyResult = 0;
+
+
 
   const response = {
     statusCode: 200,
