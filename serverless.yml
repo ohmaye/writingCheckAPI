@@ -1,10 +1,13 @@
-service: writingCheck
+service: writingCheckAPI
 
 frameworkVersion: ">=1.1.0 <2.0.0"
 
 provider:
   name: aws
   runtime: nodejs8.10
+  environment: 
+    SLS_DEBUG: "*"
+  
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -12,10 +15,14 @@ provider:
       Resource: "*"
 
 functions:
-  writingCheck:
+  writingCheckAPI:
     handler: handler.endpoint
     events:
       - http:
           path: check
           method: post
           cors: true
+
+package:
+    exclude:
+        - node_modules/**
