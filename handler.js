@@ -5,8 +5,8 @@ const lambda = new AWS.Lambda({ region: "us-east-1" });
 
 
 module.exports.endpoint = (event, context, callback) => {
-  let writing = "***";
-  let sample = "!!!";
+  let writing = "*";
+  let sample = "!";
 
   if (event.body !== null && event.body !== undefined) {
     let body = JSON.parse(event.body);
