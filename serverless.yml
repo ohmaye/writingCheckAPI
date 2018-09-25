@@ -35,3 +35,5 @@ functions:
 package:
     exclude:
         - node_modules/**
+    include:
+        - node_modules/rxjs/**

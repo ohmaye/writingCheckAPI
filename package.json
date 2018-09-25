@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.310.0"
+    "aws-sdk": "^2.310.0",
+    "rxjs": "^6.3.2"
   }
 }
