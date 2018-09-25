@@ -12,14 +12,23 @@ provider:
     - Effect: Allow
       Action:
         - lambda:InvokeFunction
+        - dynamodb:GetItem
       Resource: "*"
 
 functions:
-  writingCheckAPI:
-    handler: handler.endpoint
+  writingCheckTextAPI:
+    handler: handlertext.endpoint
     events:
       - http:
-          path: check
+          path: checktext
+          method: post
+          cors: true
+
+  writingCheckDBAPI:
+    handler: handlerdb.endpoint
+    events:
+      - http:
+          path: checkdb
           method: post
           cors: true
 
