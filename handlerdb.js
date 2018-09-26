@@ -48,7 +48,7 @@ module.exports.endpoint = (event, context, callback) => {
     }
     sample = JSON.stringify(result.Item.ModelTxtUrl)
     sample = striptags(sample)
-    sample = sample.replace(/\\n\\t/g, '')
+    sample = sample.replace(/\\n\\t|\\n|\"/g, '')
 
     const params = {
       FunctionName: "termfrequencylambda-dev-termFrequency",
