@@ -1,5 +1,6 @@
 "use strict"
 const AWS = require("aws-sdk")
+const striptags = require("striptags")
 const { Observable, from, just } = require("rxjs")
 const { map } = require("rxjs/operators")
 
@@ -46,6 +47,9 @@ module.exports.endpoint = (event, context, callback) => {
       return
     }
     sample = JSON.stringify(result.Item.ModelTxtUrl)
+    sample = striptags(sample)
+    sample = sample.replace(/\\n\\t/g, '')
+
     const params = {
       FunctionName: "termfrequencylambda-dev-termFrequency",
       InvocationType: "RequestResponse",
